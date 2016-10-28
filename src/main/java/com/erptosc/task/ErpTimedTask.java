@@ -1,5 +1,4 @@
-
-
+package com.erptosc.task;
 
 import java.util.Date;
 import java.util.List;
@@ -10,8 +9,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.common.until.PropertiesHelper;
+import com.common.until.PropertiesUtils;
+import com.erptosc.server.iOrderErpService;
 import com.erptosc.server.impl.GoodsService;
-import com.erptosc.server.impl.OrderService;
+import com.erptosc.server.impl.OrderErpService;
 
 
 /**
@@ -19,11 +21,11 @@ import com.erptosc.server.impl.OrderService;
  * @Description:定时任务
  * @date 2017/7/7
  */
-@Component
-public class TimedTask {
+@Component("taskJob") 
+public class ErpTimedTask {
 	
 	@Resource
-	private OrderService orderService;
+	private iOrderErpService OrderErpService;
 	
 	@Resource
 	private GoodsService goodsService;
@@ -54,9 +56,18 @@ public class TimedTask {
   * 商品定时上架
   * 每晚12:00执行
   */
- @Scheduled(cron="59 59 23 * * ? ")
+// @Scheduled(cron="59 59 23 * * ? ")
+	
+	
+/**
+ * 每2分钟执行一次	
+ */
+	@Scheduled(cron = "0 0/1 * * * ?") 
     public void getOrderFromSC(){
-	 
+	 	System.out.println("开始执行从商城获取订单");
+	 	if (PropertiesHelper.getProperty("TYPE").equals("ERP")){
+	 		OrderErpService.getOrder();
+	 	}
  	}
  
  /**

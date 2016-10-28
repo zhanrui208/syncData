@@ -7,11 +7,12 @@
 	<packaging>war</packaging>
 	<name>syncData</name>
 	<description>syncData</description>
+	<url>http://maven.apache.org</url>
 	<properties>
 		<logback.version>1.1.4</logback.version>
 		<jcl.slf4j.version>1.6.1</jcl.slf4j.version>
 		<logbackSpring.version>0.1.4</logbackSpring.version>
-		
+
 		<spring.version>4.0.9.RELEASE</spring.version>
 		<!-- 数据库驱动 -->
 		<mysql-connector-java.version>5.1.25</mysql-connector-java.version>
@@ -31,35 +32,37 @@
 		<log4j.version>2.1</log4j.version>
 		<aopalliance.version>1.0</aopalliance.version>
 		<aspectjweaver.version>1.8.1</aspectjweaver.version>
+
+		<http.vsrsion>4.3.2</http.vsrsion>
 	</properties>
 	<dependencies>
-	
+
 		<!-- 日志begin -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+			<artifactId>slf4j-log4j12</artifactId>
 			<version>${jcl.slf4j.version}</version>
 		</dependency>
 
 		<dependency>
-     		<groupId>ch.qos.logback</groupId>
-    		<artifactId>logback-core</artifactId>
-		    <version>${logback.version}</version>
-		</dependency>
-	
-		<dependency>
 			<groupId>ch.qos.logback</groupId>
-    		<artifactId>logback-classic</artifactId>
+			<artifactId>logback-core</artifactId>
 			<version>${logback.version}</version>
 		</dependency>
 
 		<dependency>
-    		<groupId>org.logback-extensions</groupId>
-    		<artifactId>logback-ext-spring</artifactId>
-		    <version>${logbackSpring.version}</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.logback-extensions</groupId>
+			<artifactId>logback-ext-spring</artifactId>
+			<version>${logbackSpring.version}</version>
 		</dependency>
 		<!-- 日志end -->
-	
+
 		<!-- Spring管理 start -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -173,24 +176,39 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.2</version>
 		</dependency>
-		
+
 		<!-- http请求 BEGIN -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
-			<version>4.3.2</version>
+			<version>${http.vsrsion}</version>
 		</dependency>
+
 		<dependency>
-		   <groupId>org.apache.httpcomponents</groupId>
-		   <artifactId>httpclient</artifactId>
-		   <version>4.2.3</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>${http.vsrsion}</version>
+		</dependency>
+
 		<!-- http请求END -->
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectjweaver.version}</version>
+		</dependency>
+
+		<!-- ali-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+    		<artifactId>fastjson</artifactId>
+    		<version>1.2.20</version>
 		</dependency>
 	</dependencies>
 </project>

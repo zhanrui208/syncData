@@ -6,9 +6,9 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
     <description>Spring公共配置</description>
-
     <context:annotation-config/>
-    <context:component-scan base-package="com.leimingtech.admin.module,com.leimingtech.service.module,com.leimingtech.extend.module,com.leimingtech.gencode">
+    
+    <context:component-scan base-package="com.**">
     </context:component-scan>
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
