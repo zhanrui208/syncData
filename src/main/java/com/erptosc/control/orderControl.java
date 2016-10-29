@@ -5,9 +5,10 @@ import java.util.Map;
 
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+@Controller
 @RequestMapping("/order")
 public class orderControl {
 	
@@ -22,4 +23,8 @@ public class orderControl {
 		return orderFinishedMap;
 	}
 	
+    @RequestMapping("/hello")
+    public String hello(){        
+        return "hello";
+    }
 }

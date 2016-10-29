@@ -6,8 +6,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-    <context:annotation-config/>
-
+    <!--<context:annotation-config/>   -->
+	<mvc:annotation-driven /> 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           lazy-init="false">
         <property name="locations">
@@ -18,7 +18,7 @@
     </bean>
 
     <!-- 自动扫描且只扫描@Controller -->
-    <context:component-scan base-package="com.*" use-default-filters="false">
+    <context:component-scan base-package="com.**" use-default-filters="false">
     </context:component-scan>
 
     <!-- 静态资源的访问 -->
