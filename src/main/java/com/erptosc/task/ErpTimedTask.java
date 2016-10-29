@@ -9,10 +9,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.common.until.PropertiesHelper;
 import com.common.until.PropertiesUtils;
 import com.erptosc.server.iOrderErpService;
-import com.erptosc.server.impl.GoodsService;
+import com.erptosc.server.impl.GoodsErpService;
 import com.erptosc.server.impl.OrderErpService;
 
 
@@ -28,9 +27,9 @@ public class ErpTimedTask {
 	private iOrderErpService OrderErpService;
 	
 	@Resource
-	private GoodsService goodsService;
+	private GoodsErpService goodsService;
 	
-
+	private static boolean isRun = false;
 
 	
 //	/** 京东联盟接口 */
@@ -62,12 +61,19 @@ public class ErpTimedTask {
 /**
  * 每2分钟执行一次	
  */
-	@Scheduled(cron = "0 0/1 * * * ?") 
+	@Scheduled(cron = "0/5 * * * * ?") 
     public void getOrderFromSC(){
-	 	System.out.println("开始执行从商城获取订单");
-	 	if (PropertiesHelper.getProperty("TYPE").equals("ERP")){
-	 		OrderErpService.getOrder();
-	 	}
+		if (!isRun){
+			synchronized(this) {
+				isRun = true;
+			}
+		 	System.out.println("开始执行从商城获取订单");
+		 	if (PropertiesUtils.getInstance().getProperty("TYPE").equals("ERP")){
+		 		OrderErpService.getOrder();
+		 	}
+		 	System.out.println("结束执行从商城获取订单");
+		 	isRun = false;
+		}
  	}
  
  /**

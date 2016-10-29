@@ -1,5 +1,5 @@
 package com.erptosc.server;
 
-public class iGoodsService {
+public class iGoodsErpService {
 
 }

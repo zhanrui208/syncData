@@ -13,7 +13,7 @@
 		<jcl.slf4j.version>1.6.1</jcl.slf4j.version>
 		<logbackSpring.version>0.1.4</logbackSpring.version>
 
-		<spring.version>4.0.9.RELEASE</spring.version>
+		<spring.version>4.2.4.RELEASE</spring.version>
 		<!-- 数据库驱动 -->
 		<mysql-connector-java.version>5.1.25</mysql-connector-java.version>
 		<oracle.driver.version>10.2.0.4.0</oracle.driver.version>
@@ -34,6 +34,7 @@
 		<aspectjweaver.version>1.8.1</aspectjweaver.version>
 
 		<http.vsrsion>4.3.2</http.vsrsion>
+		 <json-lib.version>2.4</json-lib.version>
 	</properties>
 	<dependencies>
 
@@ -204,11 +205,13 @@
 			<version>${aspectjweaver.version}</version>
 		</dependency>
 
-		<!-- ali-->
+		<!-- ali <dependency> <groupId>com.alibaba</groupId> <artifactId>fastjson</artifactId> 
+			<version>1.2.20</version> </dependency> -->
 		<dependency>
-			<groupId>com.alibaba</groupId>
-    		<artifactId>fastjson</artifactId>
-    		<version>1.2.20</version>
+			  <groupId>net.sf.json-lib</groupId>
+			  <artifactId>json-lib</artifactId>
+			  <version>${json-lib.version}</version>
+			  <classifier>jdk15</classifier>
 		</dependency>
 	</dependencies>
 </project>

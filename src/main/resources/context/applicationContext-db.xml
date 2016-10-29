@@ -36,7 +36,7 @@
         <!-- 配置监控统计拦截的filters -->
         <property name="filters" value="${druid.filters}" />
     </bean>
-
+	<!-- 
     <bean id="dynamicDataSource" class="com.leimingtech.core.db.DynamicDataSource" >
         <property name="targetDataSources">
             <map key-type="java.lang.String">
@@ -46,8 +46,8 @@
         <property name="defaultTargetDataSource" ref="dataSource_db01" >
         </property>
     </bean>
-
+	 -->
     <bean id="dataSourceProxy" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
-        <property name="targetDataSource" ref="dynamicDataSource"/>
+        <property name="targetDataSource" ref="dataSource_db01"/>
     </bean>
 </beans>
