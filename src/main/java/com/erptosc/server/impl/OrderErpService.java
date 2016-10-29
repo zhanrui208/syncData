@@ -19,6 +19,7 @@ public class OrderErpService implements iOrderErpService{
 		params.put("name", "ERP传数据到商城！");
 		String msg ="";
 		String url = PropertiesUtils.getInstance().getProperty("SCURL");
+		url += "/order/getfromsc";
 		try {
 			msg = HttpHelper.post(params, url);
 		} catch (Exception e) {
