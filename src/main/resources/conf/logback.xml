@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user -->
+<!-- -->
+<!-- For professional support please see -->
+<!-- http://www.qos.ch/shop/products/professionalSupport -->
+<!-- -->
+<configuration>
+    <appender name="openorg"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+        <encoding>UTF-8</encoding>
+        <File>${catalina.base}/logs/syncdata.log</File>
+        <encoder>
+            <pattern>[%d{yyy-MM-dd HH:mm:ss}] %m [%c]%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>30</maxIndex>
+            <FileNamePattern>${catalina.base}/logs/openorg.log.%i
+            </FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="cosole" class="ch.qos.logback.core.ConsoleAppender">
+        <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+        <encoding>UTF-8</encoding>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{yyy-MM-dd HH:mm:ss}] %m [%c]%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.kingdee.open" level="info">
+        <appender-ref ref="openorg" />
+    </logger>
+    <root level="info">
+        <appender-ref ref="cosole" />
+        <appender-ref ref="openorg" />
+    </root>
+</configuration>
